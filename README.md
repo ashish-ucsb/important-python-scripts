@@ -3,27 +3,35 @@ Important Python Scripts
 
 ## Index
 * [Download file from Google Drive](#download-file-from-google-drive)
-* [Edit individual files on server using Sublime Text using rsub](#edit-individual-files-on-server-using-Sublime-Text-using-rsub)
+* [Edit individual files on server using Sublime Text using RemoteSubl](#edit-individual-files-on-server-using-Sublime-Text-using-remotesubl)
 
 
-### Edit individual files on server using Sublime Text using rsub
+### Edit individual files on server using Sublime Text using RemoteSubl
 
 **On server**
 
 ```
-wget -O /usr/local/bin/rsub \https://raw.github.com/aurora/rmate/master/rmate
-chmod a+x /usr/local/bin/rsub 
+curl -o /usr/local/bin/rmate https://raw.githubusercontent.com/aurora/rmate/master/rmate
+sudo chmod +x /usr/local/bin/rmate
 ```
 **On local**
 
 1. Install rsub Sublime3 package:
-On Sublime Text 3, open Package Manager (Ctrl-Shift-P on Linux/Win, Cmd-Shift-P on Mac, Install Package), and search for rsub and install it
+On Sublime Text 3, open Package Manager (Ctrl-Shift-P on Linux/Win, Cmd-Shift-P on Mac, Install Package), and search for **RemoteSubl** and install it
 
 2. Open command line and connect to remote server:
-``` ssh -R 52698:localhost:52698 server_user@server_address ```
+``` ssh -R 52698:localhost:52698 user@example.com ```
+
+To make your life easier, add the following to ``` ~/.ssh/config ```
+```
+Host example.com
+    RemoteForward 52698 localhost:52698
+    User user
+```
+From now on, you only have to do ``` ssh example.com ```
 
 3. After connect to server run this command on server:
-``` rsub path_to_file/file.txt ```
+``` rmate test.txt ```
 
 4. File opening auto in Sublime 3
 
