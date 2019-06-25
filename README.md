@@ -3,6 +3,29 @@ Important Python Scripts
 
 ## Index
 * [Download file from Google Drive](#download-file-from-google-drive)
+* [Edit individual files on server using Sublime Text using rsub](#edit-individual-files-on-server-using-Sublime-Text-using-rsub)
+
+
+### Edit individual files on server using Sublime Text using rsub
+
+**On server**
+
+```
+wget -O /usr/local/bin/rsub \https://raw.github.com/aurora/rmate/master/rmate
+chmod a+x /usr/local/bin/rsub 
+```
+**On local**
+
+1. Install rsub Sublime3 package:
+On Sublime Text 3, open Package Manager (Ctrl-Shift-P on Linux/Win, Cmd-Shift-P on Mac, Install Package), and search for rsub and install it
+
+2. Open command line and connect to remote server:
+``` ssh -R 52698:localhost:52698 server_user@server_address ```
+
+3. After connect to server run this command on server:
+``` rsub path_to_file/file.txt ```
+
+4. File opening auto in Sublime 3
 
 
 ### Download file from Google Drive
